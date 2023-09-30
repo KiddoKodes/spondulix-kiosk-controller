@@ -14,6 +14,7 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import { resolveHtmlPath } from './util';
 import { bootCoin, stopCoin } from './pkg/coin';
+import { bootBill, stopBill } from './pkg/bill';
 
 class AppUpdater {
   constructor() {
@@ -27,10 +28,12 @@ let mainWindow: BrowserWindow | null = null;
 
 ipcMain.on('start', async () => {
   await bootCoin();
+  await bootBill();
 });
 
 ipcMain.on('stop', async () => {
   stopCoin();
+  stopBill();
 });
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');

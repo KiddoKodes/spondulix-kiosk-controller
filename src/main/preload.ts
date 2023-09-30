@@ -2,7 +2,7 @@
 /* eslint no-unused-vars: off */
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
-export type Channels = 'start' | 'stop';
+export type Channels = 'start' | 'stop'|'coin-balance'|'bill-balance';
 
 const electronHandler = {
   ipcRenderer: {

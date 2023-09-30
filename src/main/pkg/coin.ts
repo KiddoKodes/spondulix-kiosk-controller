@@ -14,8 +14,8 @@ export const bootCoin = async () => {
   if (coinSSP.port) {
     coinSSP.removeAllListeners();
     coinSSP.close();
-    coinSSP.open('/dev/ttyUSB0');
-  } else coinSSP.open('/dev/ttyUSB0');
+    coinSSP.open('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.3:1.0-port0');
+  } else coinSSP.open('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.3:1.0-port0');
   await coinSSP.command('SYNC');
   await coinSSP.command('SET_CHANNEL_INHIBITS', {
     channels: [1, 1, 1, 1, 1, 1, 1, 1], // channel  enable
@@ -24,7 +24,7 @@ export const bootCoin = async () => {
   await coinSSP.command('SET_COIN_MECH_GLOBAL_INHIBIT', { enable: true });
   await coinSSP.initEncryption();
   await coinSSP.command('GET_SERIAL_NUMBER');
-  await coinSSP.enable();
+   coinSSP.enable();
 };
 export const stopCoin = () => {
   coinSSP.removeAllListeners();
