@@ -14,8 +14,8 @@ export const bootCoin = async () => {
   if (coinSSP.port) {
     coinSSP.removeAllListeners();
     coinSSP.close();
-    coinSSP.open('/dev/ttyUSB0');
-  } else coinSSP.open('/dev/ttyUSB0');
+    coinSSP.open('/dev/ttyCoin');
+  } else coinSSP.open('/dev/ttyCoin');
   await coinSSP.command('SYNC');
   await coinSSP.command('SET_CHANNEL_INHIBITS', {
     channels: [1, 1, 1, 1, 1, 1, 1, 1], // channel  enable
