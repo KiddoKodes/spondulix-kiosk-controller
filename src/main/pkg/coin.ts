@@ -24,7 +24,7 @@ export const bootCoin = async () => {
   await coinSSP.command('SET_COIN_MECH_GLOBAL_INHIBIT', { enable: true });
   await coinSSP.initEncryption();
   await coinSSP.command('GET_SERIAL_NUMBER');
-  await coinSSP.enable();
+   coinSSP.enable();
 };
 export const stopCoin = () => {
   coinSSP.removeAllListeners();
